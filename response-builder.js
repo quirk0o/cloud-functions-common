@@ -6,16 +6,16 @@ class ResponseBuilder {
     this._hrtime = time
   }
 
-  exec(pending) {
-    return this._handlePromise(pending, 'exec', response => response.stdout, this._formatExecResponse)
+  exec(pending, responseMapper = x => x) {
+    return this._handlePromise(pending, 'exec', responseMapper, this._formatExecResponse)
   }
 
-  download(pending) {
-    return this._handlePromise(pending, 'download', response => response.data || response, this._formatStorageResponse)
+  download(pending, responseMapper = x => x) {
+    return this._handlePromise(pending, 'download', responseMapper, this._formatStorageResponse)
   }
 
-  upload(pending) {
-    return this._handlePromise(pending, 'upload', response => response.data || response, this._formatStorageResponse)
+  upload(pending, responseMapper = x => x) {
+    return this._handlePromise(pending, 'upload', responseMapper, this._formatStorageResponse)
   }
 
   toJSON() {
