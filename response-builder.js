@@ -64,7 +64,7 @@ class ResponseBuilder {
   _formatStorageResponse(error, response) {
     response = response || {}
     return {
-      error: error,
+      error: error ? error.toString() : null,
       size: response.size
     }
   }
