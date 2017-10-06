@@ -10,7 +10,7 @@ class ResponseBuilder {
     return this._handlePromise(pending, 'exec', responseMapper, this._formatExecResponse)
   }
 
-  download(pending, responseMapper = x => x) {
+  download(pending, responseMapper = x => x.data) {
     return this._handlePromise(pending, 'download', responseMapper, this._formatStorageResponse)
   }
 
