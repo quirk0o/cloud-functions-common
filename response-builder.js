@@ -10,7 +10,7 @@ class ResponseBuilder {
     return this._handlePromise(pending, 'exec', responseMapper, this._formatExecResponse)
   }
 
-  download(pending, responseMapper = x => x.data) {
+  download(pending, responseMapper = x => x) {
     return this._handlePromise(pending, 'download', responseMapper, this._formatStorageResponse)
   }
 
@@ -65,7 +65,7 @@ class ResponseBuilder {
     response = response || {}
     return {
       error: error ? error.toString() : null,
-      size: response.size
+      size: response.length
     }
   }
 }
