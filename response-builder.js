@@ -34,8 +34,9 @@ class ResponseBuilder {
       pending
         .then(response => {
           console.log(key + ' success')
-          this._registerResponse(formatter(null, response), key)
-          resolve(responseMapper(response))
+          const data = responseMapper(response)
+          this._registerResponse(formatter(null, data), key)
+          resolve(data)
         })
         .catch(error => {
           console.log(key + ' failure: ' + error)
