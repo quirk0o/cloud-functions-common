@@ -1,9 +1,9 @@
 class ResponseBuilder {
-  constructor(time = process.hrtime()) {
+  constructor(time) {
     this._response = {}
     this._time = {}
 
-    this._hrtime = time
+    this._hrtime = time || process.hrtime()
   }
 
   exec(pending, responseMapper = x => x) {
