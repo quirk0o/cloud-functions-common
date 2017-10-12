@@ -3,7 +3,9 @@ class ResponseBuilder {
     this._response = {}
     this._time = {}
 
+    console.log('response builder: ' + process.hrtime())
     this._hrtime = time || process.hrtime()
+    console.log('response builder: ' + this._hrtime)
   }
 
   exec(pending, responseMapper = x => x) {
@@ -47,9 +49,10 @@ class ResponseBuilder {
   }
 
   _registerResponse(response, key) {
-    this._hrtime = process.hrtime(this._hrtime)
+    console.log('before: ' + this._hrtime)
     this._response[key] = response
-    this._time[key] = this._hrtime
+    this._time[key] = process.hrtime(this._hrtime)
+    console.log('after: ' + this._hrtime)
   }
 
   _formatExecResponse(errorResponse, response) {
